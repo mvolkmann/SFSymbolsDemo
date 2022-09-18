@@ -12,6 +12,7 @@
 		1A36EE3D28D7446900372EE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A36EE3C28D7446900372EE1 /* Assets.xcassets */; };
 		1A36EE4028D7446900372EE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A36EE3F28D7446900372EE1 /* Preview Assets.xcassets */; };
 		1A36EE4928D7723100372EE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1A36EE4828D7723100372EE1 /* README.md */; };
+		1A36EE4B28D772ED00372EE1 /* SFSymbolsVariableColorDemo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A36EE4A28D772ED00372EE1 /* SFSymbolsVariableColorDemo.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		1A36EE3C28D7446900372EE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A36EE3F28D7446900372EE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A36EE4828D7723100372EE1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1A36EE4A28D772ED00372EE1 /* SFSymbolsVariableColorDemo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = SFSymbolsVariableColorDemo.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 		1A36EE2C28D7446800372EE1 = {
 			isa = PBXGroup;
 			children = (
+				1A36EE4A28D772ED00372EE1 /* SFSymbolsVariableColorDemo.jpg */,
 				1A36EE4828D7723100372EE1 /* README.md */,
 				1A36EE3728D7446800372EE1 /* SFSymbolsDemo */,
 				1A36EE3628D7446800372EE1 /* Products */,
@@ -129,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A36EE4928D7723100372EE1 /* README.md in Resources */,
+				1A36EE4B28D772ED00372EE1 /* SFSymbolsVariableColorDemo.jpg in Resources */,
 				1A36EE4028D7446900372EE1 /* Preview Assets.xcassets in Resources */,
 				1A36EE3D28D7446900372EE1 /* Assets.xcassets in Resources */,
 			);
