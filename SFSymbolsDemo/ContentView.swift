@@ -13,13 +13,25 @@ struct ContentView: View {
     // Most of the "variable" symbols only use or two colors.
     // Very few currently use three colors.
     private let percentDeltaMap: [String: Double] = [
+        "antenna.radiowaves.left.and.right": 0.5,
         "cellularbars": 0.25,
+        "dot.radiowaves.right": 0.25,
+        "dot.radiowaves.up.forward": 0.25,
+        "ellipsis.bubble": third,
+        "ellipsis": third,
+        "ellipsis.message": third,
         "homekit": 0.25,
         "mic.and.signal.meter.fill": 0.25,
         "person.3.sequence": third,
         "person.3.sequence.fill": third,
+        "phone.and.waveform": 0.2,
         "slowmo": 1.0 / 12.0,
-        "speaker.wave.3": third
+        "speaker.wave.3": third,
+        "speaker.wave.3.fill": third,
+        "square.stack.3d.up.fill": third,
+        "target": third,
+        "touchid": 1.0 / 6.0,
+        "wand.and.rays": 1.0 / 7.0
     ]
 
     private let renderingModeMap: [String: SymbolRenderingMode] = [
@@ -31,37 +43,30 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Picker("Symbol", selection: $selectedSymbol) {
-                    ForEach(
-                        percentDeltaMap.keys.sorted(),
-                        id: \.self
-                    ) { systemName in
-                        Text(systemName).tag(systemName)
-                    }
+            Picker("Symbol", selection: $selectedSymbol) {
+                ForEach(
+                    percentDeltaMap.keys.sorted(),
+                    id: \.self
+                ) { systemName in
+                    Text(systemName).tag(systemName)
                 }
-                .onChange(of: selectedSymbol) { _ in percent = 0.0 }
-                Picker("Rendering Mode", selection: $selectedRenderingMode) {
-                    Text("Monochrome").tag("monochrome")
-                    Text("Hierarchical").tag("hierarchical")
-                    Text("Palette").tag("palette")
-                    Text("Multicolor").tag("multicolor")
-                }
-                .onChange(of: selectedRenderingMode) { _ in percent = 0.0 }
             }
-
-            HStack {
-                Image(systemName: selectedSymbol, variableValue: percent)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 80)
-                    .foregroundStyle(.yellow, .orange, .red)
-                    .symbolRenderingMode(
-                        renderingModeMap[selectedRenderingMode]
-                    )
-                Text(String(format: "%.2f", percent) + "%")
+            .onChange(of: selectedSymbol) { _ in percent = 0.0 }
+            Picker("Rendering Mode", selection: $selectedRenderingMode) {
+                Text("Monochrome").tag("monochrome")
+                Text("Hierarchical").tag("hierarchical")
+                Text("Palette").tag("palette")
+                Text("Multicolor").tag("multicolor")
             }
-
+            .onChange(of: selectedRenderingMode) { _ in percent = 0.0 }
+            Image(systemName: selectedSymbol, variableValue: percent)
+                .resizable()
+                .scaledToFit()
+                .frame(height: 80)
+                .foregroundStyle(.red, .green, .blue)
+                .symbolRenderingMode(
+                    renderingModeMap[selectedRenderingMode]
+                )
             HStack {
                 Button("-") {
                     if percent > 0 { percent -= percentDelta }
@@ -73,6 +78,7 @@ struct ContentView: View {
                 .disabled(percent >= 1)
                 Button("Reset") { percent = 0 }
             }
+            Text(String(format: "%.2f", percent) + "%")
         }
         .buttonStyle(.bordered)
         .padding()
