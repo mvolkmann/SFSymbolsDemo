@@ -43,6 +43,10 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
+            Text("SF Symbols\nVariable Color Demo")
+                .font(.largeTitle)
+                .multilineTextAlignment(.center)
+
             Picker("Symbol", selection: $selectedSymbol) {
                 ForEach(
                     percentDeltaMap.keys.sorted(),
@@ -52,6 +56,7 @@ struct ContentView: View {
                 }
             }
             .onChange(of: selectedSymbol) { _ in percent = 0.0 }
+
             Picker("Rendering Mode", selection: $selectedRenderingMode) {
                 Text("Monochrome").tag("monochrome")
                 Text("Hierarchical").tag("hierarchical")
@@ -59,25 +64,34 @@ struct ContentView: View {
                 Text("Multicolor").tag("multicolor")
             }
             .onChange(of: selectedRenderingMode) { _ in percent = 0.0 }
+
+            Spacer()
             Image(systemName: selectedSymbol, variableValue: percent)
                 .resizable()
                 .scaledToFit()
-                .frame(height: 80)
+                .frame(height: 100)
+                .padding(.vertical)
                 .foregroundStyle(.red, .green, .blue)
                 .symbolRenderingMode(
                     renderingModeMap[selectedRenderingMode]
                 )
-            HStack {
-                Button("-") {
+            Spacer()
+
+            HStack(spacing: 30) {
+                Button("- ") {
                     if percent > 0 { percent -= percentDelta }
                 }
                 .disabled(percent <= 0)
-                Button("+") {
+
+                Button("+ ") {
                     if percent < 1 { percent += percentDelta }
                 }
                 .disabled(percent >= 1)
+
                 Button("Reset") { percent = 0 }
             }
+            .font(.system(size: 30))
+
             Text(String(format: "%.2f", percent) + "%")
         }
         .buttonStyle(.bordered)
